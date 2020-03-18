@@ -13,6 +13,25 @@ const Invoices = props => (
       </li>
     </ul>
 
+    <form
+      onSubmit={event => {
+        event.preventDefault()
+        const id = event.target.elements[0].value
+        event.target.reset()
+
+        // pretend like we saved a record to the DB here
+        // and then we navigate imperatively
+        props.navigate(id)
+      }}
+    >
+      <p>
+        <label>
+          New Invoice ID: <input type="text" />
+        </label>
+        <button type="submit">create</button>
+      </p>
+    </form>
+
     {props.children}
   </div>
 )
